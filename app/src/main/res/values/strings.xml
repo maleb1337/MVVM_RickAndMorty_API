@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Test Betterfly</string>
+    <string name="retry">Reintentar</string>
 </resources>
