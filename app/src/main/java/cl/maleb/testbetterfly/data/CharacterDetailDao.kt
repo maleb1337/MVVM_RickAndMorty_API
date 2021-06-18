@@ -13,8 +13,8 @@ interface CharacterDetailDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacterDetail(characterDetailData: CharacterDetailData)
 
-    @Query("SELECT * FROM characterDetailDataTable")
-    fun getCharacterDetail(): Flow<CharacterDetailData>
+    @Query("SELECT * FROM characterDetailDataTable WHERE id=:characterIdentifier")
+    fun getCharacterDetail(characterIdentifier: Int): Flow<CharacterDetailData>
 
     @Query("DELETE FROM characterDetailDataTable")
     suspend fun deleteCharacter()

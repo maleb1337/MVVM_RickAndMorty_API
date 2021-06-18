@@ -27,7 +27,7 @@ class CharacterRepository @Inject constructor(
 
     fun getCharacterDetail(characterIdentifier: String) = networkBoundResource(
         databaseQuery = {
-            characterDetailDao.getCharacterDetail()
+            characterDetailDao.getCharacterDetail(characterIdentifier.toInt())
         },
         networkCall = {
             apiService.getCharacterDetail(characterIdentifier)

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Test Betterfly</string>
-    <string name="retry">Reintentar</string>
+    <string name="retry">Retry</string>
+    <string name="detail_title_format">Name: %s</string>
+    <string name="detail_status_format">Status: %s</string>
+    <string name="detail_species_format">Species: %s</string>
+    <string name="detail_gender_format">Gender: %s</string>
+    <string name="detail_origin_format">Origin: %s</string>
 </resources>

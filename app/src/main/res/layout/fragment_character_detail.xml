@@ -29,7 +29,7 @@
 
 
     <TextView
-        android:id="@+id/text_view_description"
+        android:id="@+id/text_view_status"
         style="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +37,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_title"
-        tools:text="Descripción" />
+        tools:text="Status" />
+
+    <TextView
+        android:id="@+id/text_view_species"
+        style="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_status"
+        tools:text="Species" />
+
+    <TextView
+        android:id="@+id/text_view_gender"
+        style="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_species"
+        tools:text="Gender" />
+
+    <TextView
+        android:id="@+id/text_view_origin_name"
+        style="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_gender"
+        tools:text="Origin Name" />
 
 
     <ProgressBar

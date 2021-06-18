@@ -78,8 +78,11 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
                     .load(image)
                     .into(imageView)
 
-                textViewTitle.text = name
-                textViewDescription.text = created
+                textViewTitle.text = getString(R.string.detail_title_format, name)
+                textViewStatus.text = getString(R.string.detail_status_format, status)
+                textViewSpecies.text = getString(R.string.detail_species_format, species)
+                textViewGender.text = getString(R.string.detail_gender_format, gender)
+                textViewOriginName.text = getString(R.string.detail_origin_format, origin?.name)
             }
 
         }
