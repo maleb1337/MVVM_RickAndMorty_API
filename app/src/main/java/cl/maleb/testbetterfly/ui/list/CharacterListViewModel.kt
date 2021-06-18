@@ -8,7 +8,9 @@ import cl.maleb.testbetterfly.api.list.ResultData
 import cl.maleb.testbetterfly.data.repository.CharacterRepository
 import cl.maleb.testbetterfly.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,5 +26,18 @@ class CharacterListViewModel @Inject constructor(private val repository: Charact
             characterListMutableLiveData.value = it
         }
     }
+
+    /**
+     * Events section
+     */
+
+    private val characterListEventChannel = Channel<CharacterListEvent>()
+    val characterListEvent = characterListEventChannel.receiveAsFlow()
+
+
+    fun onCharacterSelected(identifier: String) = viewModelScope.launch {
+        characterListEventChannel.send(CharacterListEvent.NavigateToDetailScreen(identifier))
+    }
+
 
 }

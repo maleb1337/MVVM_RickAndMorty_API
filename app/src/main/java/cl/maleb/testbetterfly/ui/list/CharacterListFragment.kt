@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cl.maleb.testbetterfly.R
 import cl.maleb.testbetterfly.api.list.ResultData
@@ -14,6 +16,7 @@ import cl.maleb.testbetterfly.utils.Resource
 import cl.maleb.testbetterfly.utils.gone
 import cl.maleb.testbetterfly.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class CharacterListFragment : Fragment(R.layout.fragment_character_list),
@@ -49,6 +52,21 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list),
                 is Resource.Success -> showSuccessView(result.data)
             }
         })
+
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            viewModel.characterListEvent.collect { event ->
+                when (event) {
+                    is CharacterListEvent.NavigateToDetailScreen -> {
+                        val action =
+                            CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
+                                characterIdentifier = event.characterIdentifier
+                            )
+                        findNavController().navigate(action)
+                    }
+                }
+            }
+        }
+
     }
 
     private fun setUpView() {
@@ -99,6 +117,6 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list),
     }
 
     override fun onItemClick(result: ResultData) {
-
+        viewModel.onCharacterSelected(result.id.toString())
     }
 }
